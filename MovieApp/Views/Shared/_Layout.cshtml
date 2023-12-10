@@ -1,0 +1,106 @@
+﻿@{
+    string username = User.Identity.Name;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieApp</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <header class="header" data-header>
+        <div class="container">
+    
+          <div class="overlay" data-overlay></div>
+    
+          <a href="/Home/Index" class="logo">
+            <h1>MovieApp</h1>
+          </a>
+    
+          <div class="header-actions">
+    
+            
+    
+            @if (!string.IsNullOrEmpty(username))
+            {
+                <div class="dropdown">
+                    <button class="btn btn-primary">Admin</button> 
+                    <div class="dropdown-content">
+                    <a href="/Genre/Add">Gatunki</a>
+                    <a href="/Movie/Add">Filmy</a>
+                    <a href="/UserAuthentication/Logout">Wyloguj się</a>
+                  </div>
+                </div>
+            }
+            @if (string.IsNullOrEmpty(username)){
+                    <a class="btn btn-primary" href="/UserAuthentication/Login">Zaloguj się</a>
+            }
+          </div>
+    
+          <button class="menu-open-btn" data-menu-open-btn>
+            <ion-icon name="reorder-two"></ion-icon>
+          </button>
+    
+          <nav class="navbar" data-navbar>
+    
+            <div class="navbar-top">
+    
+              <a href="./index.html" class="logo">
+                <h1>MovieApp</h1>
+              </a>
+    
+              <button class="menu-close-btn" data-menu-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+    
+            </div>
+    
+            <ul class="navbar-list">
+    
+              <li>
+                <a href="/Home/Index" class="navbar-link">Strona główna</a>
+              </li>
+    
+              <li>
+                <a href="/Home/About" class="navbar-link">O stronie</a>
+              </li>
+
+            </ul>
+ 
+          </nav>
+    
+        </div>
+      </header>
+
+      <main>
+        @RenderBody()
+    </main>
+    
+      <!-- #FOOTER-->
+    
+      <footer class="footer">
+        <div class="footer-bottom">
+          <div class="container">
+    
+            <p class="copyright">
+              &copy; 2022 <a href="#">Maciej Szwast</a>.</p>
+          </div>
+        </div>
+      </footer>
+
+  <script src="/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

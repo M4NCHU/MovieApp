@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MovieApp.Models.Domain.Genre>
+@{
+}
+
+<section class="default-container">
+    <div class="container">
+        <div class="default-content">
+            <div class="tbl-container">
+                <div class="view-header">
+                    <h2 class="view-h2">Gatunki filmowe</h2>
+                    <a href="/Genre/Add" class="btn btn-sec">Wróć</a>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Edytuj</th>
+                        <th>Usuń</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.GenreName</td>
+                            <td>
+                                <a href="/Genre/Edit?id=@item.Id" class="">Edytuj</a>
+                            </td>
+                            <td><a onclick="return window.confirm('Jesteś pewien?')" href="/Genre/Delete?id=@item.Id" class="">Usuń</a></td>
+                        </tr>
+                    }
+
+                </table>
+                
+            </div>
+            </div>
+    </div class="container">
+</section>

@@ -1,0 +1,73 @@
+﻿@model MovieApp.Models.Domain.Movie
+@{
+}
+
+<section class="movie-detail">
+        <div class="container">
+
+          <figure class="movie-detail-banner">
+
+            <img src="/Uploads/@Model.MovieImage" alt="Free guy movie poster">
+
+            <button class="play-btn">
+              <ion-icon name="play-circle-outline"></ion-icon>
+            </button>
+
+          </figure>
+
+          <div class="movie-detail-content">
+
+
+
+            <h1 class="h1 detail-title">
+              @Model.Title
+            </h1>
+
+            <div class="meta-wrapper">
+
+              <div class="badge-wrapper">
+                <div class="badge badge-fill">PG 13</div>
+
+                <div class="badge badge-outline">HD</div>
+              </div>
+
+              <div class="ganre-wrapper">
+                <a href="#">@Model.GenreNames</a>
+                <a href="#">@Model.Cast</a>
+
+                
+              </div>
+
+              <div class="date-time">
+
+                <div>
+                  <ion-icon name="calendar-outline"></ion-icon>
+
+                  <time datetime="@Model.ReleaseYear">@Model.ReleaseYear</time>
+                </div>
+
+                <div>
+                  <ion-icon name="time-outline"></ion-icon>
+
+                  <time datetime="PT115M">@Model.Director</time>
+                </div>
+
+              </div>
+
+            </div>
+
+            <p class="storyline">
+                @Model.Desc
+            </p>
+
+            <p class="storyline">
+              <a href="/Home/Index" class="btn btn-default">Wróć na stronę główną</a>
+            </p>
+            
+
+          </div>
+
+        </div>
+      </section>
+
+

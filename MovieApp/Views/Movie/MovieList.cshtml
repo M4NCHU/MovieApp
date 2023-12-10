@@ -1,0 +1,48 @@
+﻿@model MovieApp.Models.DTO.MovieListVm
+@{
+}
+
+<section class="default-container">
+    <div class="container">
+        <div class="default-content">
+            <div class="tbl-container">
+                <div class="view-header">
+                    <h2 class="view-h2">Filmy</h2>
+                    <a href="/Movie/Add" class="btn btn-sec">Wróć</a>
+                </div>
+
+                    <table>
+                        <tr>
+                            <th>Tyuł</th>
+                            <th>Gatunek</th>
+                            <th>Data produkcji</th>
+                            <th>Zdjęcie</th>
+                            <th>Obsada</th>
+                            <th>Reżyser</th>
+                            <th>Edytuj</th>
+                            <th>Usuń</th>
+                        </tr>
+                        @foreach (var item in Model.MovieList)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.GenreNames</td>
+                                <td>@item.ReleaseYear</td>
+                                <td><img style="height:60px;width:80px" src="/Uploads/@item.MovieImage" /></td>
+                                <td>@item.Cast</td>
+                                <td>@item.Director</td>
+                                <td>
+                                    <a href="/Movie/Edit?id=@item.Id" >Edytuj</a>
+                                </td>
+                                <td>
+                                    <a onclick="return window.confirm('Jesteś pewien?')" href="/Movie/Delete?id=@item.Id" >Usuń</a>
+                                </td>
+                              </tr>
+                        }
+
+                    </table>
+                
+            </div>
+            </div>
+    </div class="container">
+</section>

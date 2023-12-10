@@ -1,0 +1,37 @@
+﻿@model MovieApp.Models.Domain.Genre
+
+@{
+}
+
+<section class="default-container">
+    <div class="container">
+        <div class="default-content">
+            <form class="w-40" asp-action="Update" method="post">
+                <div class="view-header">
+                    <h2 class="view-h2">Edytuj Gatunek</h2>
+                    <a class="btn btn-sec" href="/Genre/GenreList">Wszystkie gatunki</a>
+                </div>
+                <input type="hidden" class="input" asp-for="Id">
+
+                <div class="input-container">
+                    <label asp-for="GenreName" class="view-label">Nazwa gatunku</label>
+                    <input type="text" class="form-input btn-primary" asp-for="GenreName">
+                </div>
+                <div class="message-box pd-x-28 error">
+                    <span asp-validation-for="GenreName"> </span>
+                </div>
+
+                @if (TempData["msg"] != null)
+                {
+                        <div class="alert mb-1">
+                        @TempData["msg"]
+                        </div>
+                }
+
+                <div class="input-container">
+                    <button class="btn btn-default" type="submit">Zapisz</button>
+                </div>
+            </form>
+        </div>
+    </div class="container">
+</section>

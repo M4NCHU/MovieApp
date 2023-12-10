@@ -1,0 +1,200 @@
+﻿@model MovieApp.Models.DTO.MovieListVm
+@{
+    Layout = "_Layout";
+}
+
+<article>
+
+          <section class="hero">
+            <div class="container">
+    
+              <div class="hero-content">
+    
+                <p class="hero-subtitle">MovieApp</p>
+    
+                <h1 class="h1 hero-title">
+                  Stona <strong>MovieApp</strong>, Filmy i seriale.
+                </h1>
+                    <a href="#movies" class="btn btn-primary">
+                        <span>Zobacz filmy</span>
+                    </a>
+              </div>
+            </div>
+          </section>
+    
+          <!-- 
+            - #UPCOMING
+          -->
+    
+          <section class="upcoming" id="movies">
+            <div class="container">
+    
+              <div class="flex-wrapper">
+    
+                <div class="title-wrapper">
+                  <p class="section-subtitle">Lista filmów</p>
+    
+                  <h2 class="h2 section-title">Filmy</h2>
+                </div>
+    
+                <ul class="filter-list">           
+                  <li>
+                    <form method="get" asp-action="Index" class="form-search">
+                        <input class="filter-btn" type="text" name="term" placeholder="Szukaj filmu"/>
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                     </form>
+                  </li>
+    
+                  <li>
+                    <a class="filter-btn" href="/Home/Index">Wszystkie</a>
+                  </li>
+    
+                  @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        if (i == Model.CurrentPage)
+                        {
+                            <li>
+                                <a class="filter-btn" href="/Home/Index?currentPage=@i&term=@Model.Term">@i</a>
+                            </li>
+                            
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="filter-btn" href="/Home/Index?currentPage=@i&term=@Model.Term">@i</a>
+                            </li>
+                            
+
+                        }
+                    }
+                  
+    
+                </ul>
+    
+              </div>
+    
+              <ul class="movies-list  has-scrollbar">
+    
+                  
+                @foreach (var movie in Model.MovieList)
+                 {
+                <li>
+                  <div class="movie-card">
+    
+                    <a href="/Home/MovieDetail?movieId=@movie.Id">
+                      <figure class="card-banner">
+                         <img src="/Uploads/@movie.MovieImage" alt="'@movie.Title'">
+                      </figure>
+                    </a>
+    
+                    <div class="title-wrapper">
+                      <a href="./movie-details.html">
+                        <h3 class="card-title">@movie.Title</h3>
+                      </a>
+    
+                      <time datetime="'@movie.ReleaseYear'">@movie.ReleaseYear</time>
+                    </div>
+    
+                    <div class="card-meta">
+                      <div class="badge badge-outline">HD</div>
+    
+                      <div class="duration">
+                        <ion-icon name="time-outline"></ion-icon>
+    
+                        <time datetime="PT137M">137 min</time>
+                      </div>
+    
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+    
+                        <data>8.5</data>
+                      </div>
+                    </div>
+    
+                  </div>
+                </li>
+    
+                }
+              </ul>
+    
+            </div>
+          </section>
+    
+    
+    
+    
+    
+          <!-- 
+            - #SERVICE
+          -->
+    
+          <section class="service">
+            <div class="container">
+    
+              <div class="service-banner">
+                <figure>
+                  <img src="/images/service-banner.jpg" alt="HD 4k resolution! only $3.99">
+                </figure>
+    
+                
+              </div>
+    
+              <div class="service-content">
+    
+                <p class="service-subtitle">Strona z filmami</p>
+    
+                <h2 class="h2 service-title">Projekt z Programowania w ASP.NET</h2>
+    
+                <p class="service-text">
+                  Projekt został wykonany za pomocą zbioru technologii ASP.NET, opartych na frameworku zaprojektowanym przez firmę Microsoft. inne technologie: </br> - CSS </br> - JS
+                </p>
+    
+                <ul class="service-list">
+    
+                  <li>
+                    <div class="service-card">
+    
+                      <div class="card-icon">
+                        <ion-icon name="tv"></ion-icon>
+                      </div>
+    
+                      <div class="card-content">
+                        <h3 class="h3 card-title">Główne założenia projektu</h3>
+    
+                        <p class="card-text">
+                          Wykonać stronę z na której jest możliwość dodawania, usuwania filmów oraz kilka innych funkcjonalności.
+                        </p>
+                      </div>
+    
+                    </div>
+                  </li>
+    
+                  <li>
+                    <div class="service-card">
+    
+                      <div class="card-icon">
+                        <ion-icon name="videocam"></ion-icon>
+                      </div>
+    
+                      <div class="card-content">
+                        <h3 class="h3 card-title">Funkcje:</h3>
+    
+                        <p class="card-text">
+                          <ul>
+                              <li class="card-text">- Dodawanie, usuwanie oraz wyświetlanie filmów</li>
+                              <li class="card-text">- Logowanie</li>
+                              <li class="card-text">- Dodawanie gatunków filmowych</li>
+                              <li class="card-text">- Różne funkcje wykonane w JS</li>
+                          </ul>
+                        </p>
+                      </div>
+    
+                    </div>
+                  </li>
+    
+                </ul>
+    
+              </div>
+    
+            </div>
+          </section>
